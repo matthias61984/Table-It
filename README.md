@@ -12,9 +12,9 @@ HTML, CSS, Bootstrap, and Javascript
 
 ## Authors
 
-* **Corey Walsh** 
-* **Thomas Christian**
+* **Corey Walsh**
 * **Andrew West**
+* **Thomas Christian**
 
 ## Acknowledgments
 

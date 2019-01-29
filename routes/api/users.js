@@ -12,4 +12,7 @@ router.route("/:id")
 .put(userController.update)
 .delete(userController.remove);
 
+router.route("/favorites/:id")
+.get(userController.getFavorites);
+
 module.exports = router;

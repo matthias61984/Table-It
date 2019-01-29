@@ -39,6 +39,10 @@ export default {
 
     updateUser : function(id , userData) {
         return axios.put("/api/" + id , userData);
+    },
+
+    getFavorites : function(id) {
+        return axios.get("/api/favorites/" + id);
     }
 
 }

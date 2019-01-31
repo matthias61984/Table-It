@@ -1,6 +1,6 @@
 import axios from "axios";
 
-var zKey = require("dotenv").config();
+//var zKey = require("dotenv").config();
 const config = {
     headers: {
       'user-key': 'process.env.apiKey'

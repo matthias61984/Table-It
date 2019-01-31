@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import Api from "../utils/Api";
-//import { BrowserRouter as Router, Route } from "react-router-dom";
-//import Container from "../components/Container";
-//import Row from "../components/Row";
-//import Col from "../components/Col";
 
 
-class Login extends Component {
+class newUser extends Component {
 
    state = {
      username : "",
      password : "",
+     email : "",
    };
    
    handleInputChange = event => {
@@ -26,22 +23,22 @@ class Login extends Component {
    handleFormSubmit = event => {
      event.preventDefault();
 
-     if(Api.getUserbyUsername(this.state.username))
+     if((this.state.username.length > 0) && (this.state.password.length > 0) && (this.state.email.length > 0))
      {
-       const user = Api.getUserbyUsername(this.state.username);
-       if(user.password === this.state.password)
-       {
-         alert(`Hello ${this.state.username}`)
-       }
-       else
-       {
-         alert(`That password is incorrect`);
-       }
+         Api.createUser({
+             username : this.state.username,
+             password : this.state.password,
+             email : this.state.email
+         }).catch(function(err) {
+             alert(err);
+         });
      }
-     alert('That username does not exist');
 
+     alert("Please Fill out all forms");
      this.setState({
-       password : ""
+       username : "",
+       password : "",
+       email : "",
      });
    };
 
@@ -69,8 +66,16 @@ class Login extends Component {
               type = "password"
               placeholder = "Password"
               />
-          <button onClick = {this.handleFormSubmit}> Log-In </button>
-          <a href = "/createUser"> Create a User </a>
+
+            <input
+              value = {this.state.email}
+              name = "email"
+              onChange = {this.handleInputChange}
+              type = "text"
+              placeholder = "Email"
+              />
+          <button onClick = {this.handleFormSubmit}> Create New User </button>
+          <a href = "/login"> Already a user ? </a>
         </form>
       </div>
     );
@@ -78,4 +83,4 @@ class Login extends Component {
 };
 
 
-export default Login;
+export default newUser;

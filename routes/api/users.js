@@ -4,11 +4,15 @@ const userController = require("../../controllers/userController");
 
 router.route("/").post(userController.create);
 
-router.route("/:username").get(userController.findUserbyUsername);
+//add login before usernmae
+router.route("/login/:username").get(userController.findUserbyUsername);
 
 router.route("/:id")
 .get(userController.findById)
 .put(userController.update)
 .delete(userController.remove);
+
+router.route("/favorites/:id")
+.get(userController.getFavorites);
 
 module.exports = router;

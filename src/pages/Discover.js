@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import API from "../utils/Api";
+import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import Alert from "../components/Alert";
 
 class Discover extends Component {
   state = {
     image: "",
-    match: false,
-    matchCount: 0
+    favorited: false,
   };
 
   componentDidMount() {
@@ -18,12 +18,8 @@ class Discover extends Component {
     const btnType = event.target.attributes.getNamedItem("data-value").value;
     const newState = { ...this.state };
     if (btnType === "pick") {
-      // Set newState.match to either true or false depending on whether or not the dog likes us (1/5 chance)
-      newState.match = 1 === Math.floor(Math.random() * 5) + 1;
       // Set newState.matchCount equal to its current value or its current value + 1 depending on whether the dog likes us
       newState.matchCount = newState.match
-        ? newState.matchCount + 1
-        : newState.matchCount;
     } else {
       // If we thumbs down'ed the dog, we haven't matched with it
       newState.match = false;
@@ -34,18 +30,19 @@ class Discover extends Component {
   };
 
   loadNextRestaurant = () => {
-    API.getRandomRestaurant()
-      .then(res =>
+    API.getRandomRestaurantArray()
+      .then(res => {
+        console.log(res)
         this.setState({
-          image: res.data.message
+          image: res[0].restaurant.featured_image
         })
-      )
-      .catch(err => console.log(err));
+      }).catch(err => console.log(err));
   };
 
   render() {
     return (
       <div>
+        <Navbar />
         <h1 className="text-center">Find New Restaurants!</h1>
         <h3 className="text-center">
           Thumbs up to save restaurant to your favorites

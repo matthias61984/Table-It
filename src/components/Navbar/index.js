@@ -18,17 +18,22 @@ function Navbar() {
                 window.location.pathname === "/" || window.location.pathname === "/"
                   ? "nav-link active"
                   : "nav-link"
-              }
-            >
+              }>
               About
             </Link>
           </li>
           <li className="nav-item">
             <Link
               to="/discover"
-              className={window.location.pathname === "/discover" ? "nav-link active" : "nav-link"}
-            >
+              className={window.location.pathname === "/discover" ? "nav-link active" : "nav-link"}>
               Discover
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/favorites"
+              className={window.location.pathname === "/favorites" ? "nav-link active" : "nav-link"}>
+              Favorites
             </Link>
           </li>
         </ul>

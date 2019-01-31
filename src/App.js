@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Discover from "./pages/Discover";
 import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper"
+import newUser from './pages/newUser';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/discover" component={Discover} />
+          <Route exact path="/createUser" component={newUser} />
         </Wrapper>
       </div>
     </Router>

@@ -6,35 +6,50 @@ import Alert from "../components/Alert";
 
 class Discover extends Component {
   state = {
+    restArray: [],
     image: "",
+    count: 0,
     favorited: false,
   };
 
   componentDidMount() {
-    this.loadNextRestaurant();
+    this.saveArray();
   }
 
   handleBtnClick = event => {
     const btnType = event.target.attributes.getNamedItem("data-value").value;
     const newState = { ...this.state };
     if (btnType === "pick") {
-      // Set newState.matchCount equal to its current value or its current value + 1 depending on whether the dog likes us
-      newState.matchCount = newState.match
+      newState.favorited = true;
+      newState.count++;
     } else {
-      // If we thumbs down'ed the dog, we haven't matched with it
-      newState.match = false;
+      newState.favorited = false;
+      newState.count++;
     }
-    // Replace our component's state with newState, load the next dog image
     this.setState(newState);
     this.loadNextRestaurant();
   };
 
   loadNextRestaurant = () => {
-    API.getRandomRestaurantArray()
+    if (this.state.restArray[this.state.count].featured_image === "") {
+      return this.setState({
+        image: "../public/NoImgAvail.jpg"
+      })
+    } else {
+      return this.setState({
+        image: this.state.restArray[this.state.count].featured_image
+      })
+    }
+  };
+
+  saveArray = () => {
+    return API.getRandomRestaurantArray()
       .then(res => {
-        console.log(res)
-        this.setState({
-          image: res[0].restaurant.featured_image
+        return this.setState(pvSt=>{
+          return ({...pvSt, restArray: res.map(item=>({...item.restaurant}))})
+        },()=>{
+          console.log({...this.state.restArray});
+          return this.loadNextRestaurant();
         })
       }).catch(err => console.log(err));
   };

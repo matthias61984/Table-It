@@ -16,7 +16,7 @@ export default {
         .then((response) => {
             const randomRestArray = [];
             for(var i = 0; i < 20; i++) {
-                randomRestArray.push(response.data.restaurants[i])
+                randomRestArray.push(response.data.restaurants[i]);
             }
             return randomRestArray;
         })

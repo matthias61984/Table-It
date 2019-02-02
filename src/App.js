@@ -4,7 +4,6 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Discover from "./pages/Discover";
 import Favorites from "./pages/Favorites";
-import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper"
 import newUser from './pages/newUser';
 

@@ -11,7 +11,7 @@ const config = {
 axios.defaults.headers.common['user-key'] = '4ef06bf14aba6e0bcd3f7668a7b86e17'
 
 const getUrl = function(endPoint) {
-    if(process.env.NODE_ENV === "production") {
+    if(process.env.NODE_ENV == "production") {
         return endPoint;
     }
     else

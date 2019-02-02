@@ -50,7 +50,7 @@ export default {
     },
 
     createUser : function(userData) {
-        return axios.post(getUrl("/users") , userData).then(res => res);
+        return axios.post(getUrl("/api/users") , userData).then(res => res);
     },
 
     updateUser : function(id , userData) {

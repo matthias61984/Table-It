@@ -30,11 +30,14 @@ class newUser extends Component {
              password : this.state.password,
              email : this.state.email
          }).catch(function(err) {
+            console.log(err);
              alert(err);
          });
      }
-
-     alert("Please Fill out all forms");
+     else
+     {
+       alert("Please Fill out all forms");
+     }
      this.setState({
        username : "",
        password : "",

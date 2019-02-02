@@ -14,7 +14,8 @@ const getUrl = function(endPoint) {
     if(process.env.NODE_ENV === "production") {
         return endPoint;
     }
-    return endPoint + ":80";
+    console.log(endPoint);
+    return ":3001" + endPoint ;
     // else
     // {
     //     return "http://localhost:3001" + endPoint
@@ -49,7 +50,7 @@ export default {
     },
 
     createUser : function(userData) {
-        return axios.post(getUrl("/api/users") , userData).then(res => res);
+        return axios.post(getUrl("/users") , userData).then(res => res);
     },
 
     updateUser : function(id , userData) {

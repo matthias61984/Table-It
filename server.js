@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-app.use(apiRoutes);
+app.use("/api", apiRoutes);
 
 app.use("*", function (req, res) {
     return res.sendFile(path.join(__dirname, "./src/public/index.html"));

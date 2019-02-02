@@ -3,7 +3,7 @@ const apiRoutes = require("./routes/api/users");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
-const PORT = 3001;
+const PORT =  3001;
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tableit");
 app.use((req, res, next) => {
@@ -20,14 +20,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("src/public"));
+    app.use(express.static("/build"));
 }
 
 
 app.use("/api", apiRoutes);
 
 app.use("*", function (req, res) {
-    return res.sendFile(path.join(__dirname, "./src/public/index.html"));
+    return res.sendFile(path.join(__dirname, "./build/index.html"));
 });
 
 app.listen(PORT, function () {

@@ -14,7 +14,7 @@ const getUrl = function(endPoint) {
     if(process.env.NODE_ENV === "production") {
         return endPoint;
     }
-    return endPoint;
+    return endPoint + ":80";
     // else
     // {
     //     return "http://localhost:3001" + endPoint

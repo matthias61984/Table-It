@@ -15,7 +15,7 @@ const getUrl = function(endPoint) {
         return endPoint;
     }
     console.log(endPoint);
-    return ":3001" + endPoint ;
+    return endPoint ;
     // else
     // {
     //     return "http://localhost:3001" + endPoint

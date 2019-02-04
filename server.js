@@ -9,12 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if(process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
+    app.use(express.static("build"));
 }
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongo://localhost/tableit");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tableit");
 
 
 app.listen(PORT , function() {

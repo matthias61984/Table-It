@@ -49,7 +49,7 @@ class Login extends Component {
           console.log(this.state);
           if(user.password === that.state.password)
           {
-            alert(`Hello ${that.state.username}`);
+            this.props.history.push('/discover');
           }
           else
           {

@@ -2,8 +2,9 @@ const express = require("express");
 const apiRoutes = require("./routes/api/users");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const path = require("path");
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT =  process.env.PORT || 3001;
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tableit");
 app.use((req, res, next) => {
@@ -19,24 +20,24 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-<<<<<<< HEAD
+
 if(process.env.NODE_ENV === "production") {
     app.use(express.static("build"));
-=======
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
->>>>>>> 4fc8cd6c4a911b8eef451d0a9f43d2fe9ed7d51f
 }
 
 
-<<<<<<< HEAD
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tableit");
-=======
+
+    app.use(express.static(path.join(__dirname,"./build")));
+}
+
+app.use(express.static(path.join(__dirname,"./build")));
 app.use("/api", apiRoutes);
->>>>>>> 4fc8cd6c4a911b8eef451d0a9f43d2fe9ed7d51f
+
 
 app.use("*", function (req, res) {
-    return res.sendFile(path.join(__dirname, "./src/public/index.html"));
+    return res.sendFile(path.join(__dirname, "./build/index.html"));
 });
 
 app.listen(PORT, function () {

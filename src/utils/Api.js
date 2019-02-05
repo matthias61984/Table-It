@@ -14,10 +14,12 @@ const getUrl = function(endPoint) {
     if(process.env.NODE_ENV === "production") {
         return endPoint;
     }
-    else
-    {
-        return "http://localhost:3001" + endPoint
-    }
+    console.log(endPoint);
+    return endPoint ;
+    // else
+    // {
+    //     return "http://localhost:3001" + endPoint
+    // }
 }
 
 export default {

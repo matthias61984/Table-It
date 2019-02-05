@@ -78,7 +78,7 @@ class newUser extends Component {
               placeholder = "Email"
               />
           <button onClick = {this.handleFormSubmit}> Create New User </button>
-          <a href = "/login"> Already a user ? </a>
+          <a href = "/"> Already a user ? </a>
         </form>
       </div>
     );

@@ -1,13 +1,12 @@
 
 const dbUser = require("../models/user");
 
-// Defining methods for the booksController
 module.exports = {
   findUserbyUsername: function(req, res) {
     dbUser
-      .find(req.params.username)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .find({username : req.params.username})
+      .then(dbModel => res.json(dbModel[0]))
+      .catch(err => {res.status(422).json(err); console.log(err)});
   },
   findById: function(req, res) {
     dbUser
@@ -17,7 +16,11 @@ module.exports = {
   },
   create: function(req, res) {
     dbUser
-      .create(req.body)
+      .create({
+        username : req.body.username,
+        password : req.body.password,
+        email: req.body.email
+      })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

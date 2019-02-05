@@ -8,7 +8,10 @@ import Api from "../utils/Api";
 
 
 class Login extends Component {
-
+   constructor(props){
+     super(props);console.log(this);
+     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+   }
    state = {
      username : "",
      password : "",
@@ -26,23 +29,44 @@ class Login extends Component {
    handleFormSubmit = event => {
      event.preventDefault();
 
-     if(Api.getUserbyUsername(this.state.username))
-     {
-       const user = Api.getUserbyUsername(this.state.username);
-       if(user.password === this.state.password)
-       {
-         alert(`Hello ${this.state.username}`)
-       }
-       else
-       {
-         alert(`That password is incorrect`);
-       }
-     }
-     alert('That username does not exist');
-
-     this.setState({
-       password : ""
-     });
+     let user = {
+       username : "",
+       password : "",
+       email : "",
+       favorites : []
+     };
+     const that = this;
+     Api.getUserbyUsername(this.state.username)
+      .then( ({data}) => {
+        user.username = data.username;
+        user.password = data.password;
+        user.email = data.email;
+        user.favorites = data.favorites;
+        if(user)
+        {
+   
+          console.log(user);
+          console.log(this.state);
+          if(user.password === that.state.password)
+          {
+            alert(`Hello ${that.state.username}`);
+          }
+          else
+          {
+            alert(`That password is incorrect`);
+          }
+        }
+        else
+        {
+          alert('That username does not exist');
+        }
+   
+      });
+      
+      // this.setState({
+      //   password : ""
+      // });
+    
    };
 
    render()

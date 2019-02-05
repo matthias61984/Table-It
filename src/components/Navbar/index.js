@@ -29,6 +29,7 @@ function Navbar() {
               Discover
             </Link>
           </li>
+      
           <li className="nav-item">
             <Link
               to="/favorites"

@@ -76,7 +76,6 @@ class Login extends Component {
         <Jumbotron backgroundImage="https://images.unsplash.com/photo-1512805147242-c3e79caf64bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
           <h1>TableIt</h1>
           <h2>Find dinner tonight... and tomorrow night.</h2>
-        </Jumbotron>
         <form className = "form">
           <input
             value = {this.state.username}
@@ -96,6 +95,7 @@ class Login extends Component {
           <button onClick = {this.handleFormSubmit}> Log-In </button>
           <a href = "/createUser"> Create a User </a>
         </form>
+        </Jumbotron>
       </div>
     );
    }

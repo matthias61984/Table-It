@@ -20,13 +20,17 @@ const apiRoutes = require("./api/users");
 //     .
 //   catch ((error) => {
 //     console.log("axios error:", error);
+<<<<<<< HEAD
+  // });
+=======
 //   });
+>>>>>>> 4fc8cd6c4a911b8eef451d0a9f43d2fe9ed7d51f
 // API Routes
 router.use("/api", apiRoutes);
 
 // If no API routes are hit, send the React app
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../pages/index.html"));
+router.use("*",function(req, res) {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
 module.exports = router;
